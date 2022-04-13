@@ -14,7 +14,7 @@ export default new Vuex.Store({
   state: {
     current: Date.now(), // 当前时间
     intervalID: 0,
-    message: undefined
+    message: undefined,
   },
   getters: {
     hidden(state) {
