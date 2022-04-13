@@ -21,6 +21,16 @@ module.exports = {
         chunks: 'all'
     })
   },
+  devServer: {
+    // port: port,
+    // open: false,
+    // overlay: {
+    //   warnings: false,
+    //   errors: true
+    // },
+    // before: require('./mock/mock-server.js')
+    proxy: 'http://101.35.223.56:8080'
+  },
   css: {
     extract: true,
     sourceMap: false,

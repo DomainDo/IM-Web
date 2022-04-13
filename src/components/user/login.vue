@@ -92,25 +92,30 @@ export default {
     },
     login() {
       this.loading = true
+      console.log('t1')
+      console.log(window.genTestUserSig(this.$store.state.username).userSig)
+      console.log(this.$store.state.username)
+      console.log(this.$store.state.userid)
       this.tim
         .login({
-          userID: this.form.userID,
-          userSig: window.genTestUserSig(this.form.userID).userSig
+          userID: this.$store.state.username,
+          userSig: window.genTestUserSig(this.$store.state.username).userSig
         })
         .then(() => {
           this.loading = false
+          console.log('t1_inter')
           this.$store.commit('toggleIsLogin', true)
           this.$store.commit('startComputeCurrent')
-          this.$store.commit('showMessage', { type: 'success', message: '登录成功' })
+          this.$store.commit('showMessage', { type: 'success', message: '' })
           this.$store.commit({
             type: 'GET_USER_INFO',
-            userID: this.form.userID,
-            userSig: window.genTestUserSig(this.form.userID).userSig,
+            userID: this.$store.state.username,
+            userSig: window.genTestUserSig(this.$store.state.username).userSig,
             sdkAppID: window.genTestUserSig('').SDKAppID
           })
           this.$store.commit('showMessage', {
             type: 'success',
-            message: '登录成功'
+            message: ''
           })
         })
         .catch(error => {
